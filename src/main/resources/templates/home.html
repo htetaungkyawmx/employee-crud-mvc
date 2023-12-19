@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"  xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+
+    <div class="row">
+        <div class="col">
+            <a th:href="@{/save-customer}" class="btn btn-success my-3">NewCustomer</a>
+            <div class="card">
+                <div class="card-header">
+                    <div class="h3">Customers Tables</div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>PhoneNumber</th>
+                        <th>DateOfBirth</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tobody>
+                        <tr th:each="cus :${customers}">
+                            <td th:text="${cus.id}"></td>
+                            <td th:text="${cus.firstName}"></td>
+                            <td th:text="${cus.lastName}"></td>
+                            <td th:text="${cus.email}"></td>
+                            <td th:text="${cus.phoneNumber}"></td>
+                            <td th:text="${cus.dateOfBirth}"></td>
+                            <td><a class="btn btn-outline-danger"
+                                   th:href="@{'/customer/delete?id='+${cus.id}}">Delete</a></td>
+                            <td><a  class="btn btn-outline-success"
+                                    th:href="@{'/customer/update/'+${cus.id}}">Update</a></td>
+                        </tr>
+                    </tobody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

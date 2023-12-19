@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Customer Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form th:object="${customer}" th:action="@{/save-customer}" method="post">
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">FirstName</label>
+                                <input id="firstName" type="text"
+                                       th:field="*{firstName}"
+                                       th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid'"
+                                       class="form-control">
+                                <small class="invalid-feedback"
+                                       th:errors="*{firstName}"
+                                       th:if="${#fields.hasErrors('firstName')}"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">LastName</label>
+                                <input id="lastName" type="text"
+                                       th:field="*{lastName}"
+                                       th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid'"
+                                       class="form-control">
+                                <small class="invalid-feedback"
+                                       th:errors="*{lastName}"
+                                       th:if="${#fields.hasErrors('lastName')}"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" type="text"
+                                       th:field="*{email}"
+                                       th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'"
+                                       class="form-control">
+                                <small class="invalid-feedback"
+                                       th:errors="*{email}"
+                                       th:if="${#fields.hasErrors('email')}"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneNumber" class="form-label">PhoneNumber</label>
+                                <input id="phoneNumber" type="text"
+                                       th:field="*{phoneNumber}"
+                                       th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid'"
+                                       class="form-control">
+                                <small class="invalid-feedback"
+                                       th:errors="*{phoneNumber}"
+                                       th:if="${#fields.hasErrors('phoneNumber')}"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                <input id="dateOfBirth" type="date"
+                                       th:field="*{dateOfBirth}"
+                                       th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'is-invalid'"
+                                       class="form-control">
+                                <small class="invalid-feedback"
+                                       th:errors="*{dateOfBirth}"
+                                       th:if="${#fields.hasErrors('dateOfBirth')}"></small>
+                            </div>
+                            <input type="submit" value="Save Customer" class="btn btn-primary w-100">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
